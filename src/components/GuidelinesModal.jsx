@@ -10,28 +10,28 @@ export const GuidelinesModal = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
       <div 
-        className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto"
+        className="bg-white dark:bg-gray-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-gray-200 dark:border-gray-800 relative max-h-[90vh] overflow-y-auto transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={() => setIsGuidelinesOpen(false)}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         >
           <FaTimes className="w-5 h-5" />
         </button>
 
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-coral-100 text-coral-600 flex items-center justify-center text-2xl">
+          <div className="w-12 h-12 rounded-xl bg-coral-100 dark:bg-coral-950 text-coral-600 dark:text-coral-400 flex items-center justify-center text-2xl">
             <FaShieldAlt />
           </div>
           <div>
-            <h2 className="text-xl font-extrabold text-gray-900">LinkedOut Code of Conduct</h2>
-            <p className="text-xs text-gray-500">Where work gets real, without landing in HR court</p>
+            <h2 className="text-xl font-extrabold text-gray-900 dark:text-white">LinkedOut Code of Conduct</h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Where work gets real, without landing in HR court</p>
           </div>
         </div>
 
-        <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
+        <div className="space-y-4 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
           <div className="p-3 bg-coral-50/70 border border-coral-200 rounded-xl text-xs text-coral-800 flex items-start gap-2">
             <FaExclamationTriangle className="text-coral-500 text-base mt-0.5 flex-shrink-0" />
             <span>

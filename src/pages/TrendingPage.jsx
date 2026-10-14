@@ -4,7 +4,7 @@ import { useApp } from '../context/AppContext';
 import { LeftSidebar } from '../components/LeftSidebar';
 import { RightSidebar } from '../components/RightSidebar';
 import { TRENDING_TOPICS } from '../data/mockSidebarData';
-import { FaFire, FaChartLine, FaLaughSquint, FaArrowRight, FaCommentAlt } from 'react-icons/fa';
+import { FaFire, FaLaughSquint, FaArrowRight } from 'react-icons/fa';
 
 export const TrendingPage = () => {
   const { posts, setSearchQuery, setActiveCategory } = useApp();
@@ -44,8 +44,8 @@ export const TrendingPage = () => {
           </div>
 
           {/* Trending Topics Grid */}
-          <div className="bg-white rounded-xl shadow-card p-4 border border-gray-200">
-            <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-card p-4 border border-gray-200 dark:border-gray-800 transition-colors">
+            <h2 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-1.5">
               <FaFire className="text-coral-500" /> Hot Workplace Topics
             </h2>
 
@@ -55,18 +55,18 @@ export const TrendingPage = () => {
                   key={item.id}
                   type="button"
                   onClick={() => handleSelectTrend(item)}
-                  className="text-left p-3 rounded-xl border border-gray-200 hover:border-coral-400 hover:bg-coral-50/40 transition-all flex flex-col justify-between group"
+                  className="text-left p-3 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-coral-400 dark:hover:border-coral-700 hover:bg-coral-50/40 dark:hover:bg-coral-950/30 transition-all flex flex-col justify-between group"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-bold text-coral-600 bg-coral-50 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-coral-600 dark:text-coral-400 bg-coral-50 dark:bg-coral-950/60 px-2 py-0.5 rounded-full border border-coral-200 dark:border-coral-900">
                       #{idx + 1} • {item.tag}
                     </span>
-                    <span className="text-[10px] text-gray-400">{item.count}</span>
+                    <span className="text-[10px] text-gray-400 dark:text-gray-500">{item.count}</span>
                   </div>
-                  <h3 className="font-bold text-xs text-gray-900 group-hover:text-coral-600 transition-colors">
+                  <h3 className="font-bold text-xs text-gray-900 dark:text-white group-hover:text-coral-600 dark:group-hover:text-coral-400 transition-colors">
                     {item.topic}
                   </h3>
-                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100 text-[10px] text-gray-500">
+                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100 dark:border-gray-800 text-[10px] text-gray-500 dark:text-gray-400">
                     <span>Category: <strong>{item.category}</strong></span>
                     <span className="text-coral-500 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                       View feed <FaArrowRight className="text-[8px]" />
@@ -78,34 +78,34 @@ export const TrendingPage = () => {
           </div>
 
           {/* Hall of Fame / Top Laughed Posts */}
-          <div className="bg-white rounded-xl shadow-card p-4 border border-gray-200">
-            <h2 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-card p-4 border border-gray-200 dark:border-gray-800 transition-colors">
+            <h2 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-1.5">
               <FaLaughSquint className="text-amber-500" /> Hall of Fame: Top Laughed Posts
             </h2>
 
             <div className="space-y-3">
               {topLaughedPosts.map((post, idx) => (
-                <div key={post.id} className="p-3.5 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
+                <div key={post.id} className="p-3.5 rounded-xl bg-gray-50 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-gray-800 flex items-center gap-1.5">
+                    <span className="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-1.5">
                       <span className="w-5 h-5 rounded-full bg-coral-500 text-white flex items-center justify-center text-[10px]">
                         {idx + 1}
                       </span>
                       {post.isAnonymous ? 'Anonymous Employee' : post.author?.name}
                     </span>
-                    <span className="text-[11px] font-bold text-coral-600 bg-coral-100 px-2 py-0.5 rounded-full">
+                    <span className="text-[11px] font-bold text-coral-600 dark:text-coral-400 bg-coral-100 dark:bg-coral-950 px-2 py-0.5 rounded-full">
                       😂 {post.likesCount} laughs
                     </span>
                   </div>
-                  <p className="text-xs text-gray-700 italic line-clamp-3">
+                  <p className="text-xs text-gray-700 dark:text-gray-300 italic line-clamp-3">
                     "{post.content}"
                   </p>
-                  <div className="flex items-center justify-between text-[10px] text-gray-400 pt-1">
+                  <div className="flex items-center justify-between text-[10px] text-gray-400 dark:text-gray-500 pt-1">
                     <span>{post.category}</span>
                     <button 
                       type="button" 
                       onClick={() => { setSearchQuery(post.author.name); navigate('/'); }}
-                      className="text-coral-600 hover:underline font-semibold"
+                      className="text-coral-600 dark:text-coral-400 hover:underline font-semibold"
                     >
                       Read full thread & comments
                     </button>

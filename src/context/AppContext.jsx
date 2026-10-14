@@ -38,7 +38,7 @@ export const AppProvider = ({ children }) => {
   };
 
   // Add Post
-  const addPost = ({ content, category, isAnonymous }) => {
+  const addPost = ({ content, category, isAnonymous, authorDetails = null }) => {
     const newPost = {
       id: `post-${Date.now()}`,
       author: isAnonymous ? {
@@ -47,10 +47,10 @@ export const AppProvider = ({ children }) => {
         company: 'Confidential Enterprise',
         avatar: null,
       } : {
-        name: currentUser.name,
-        title: currentUser.title,
-        company: currentUser.company,
-        avatar: currentUser.avatar,
+        name: authorDetails?.name || currentUser.name,
+        title: authorDetails?.title || currentUser.title,
+        company: authorDetails?.company || currentUser.company,
+        avatar: authorDetails?.avatar || currentUser.avatar,
         isCurrentUser: true,
       },
       isAnonymous: Boolean(isAnonymous),
@@ -95,7 +95,7 @@ export const AppProvider = ({ children }) => {
   };
 
   // Add Comment
-  const addComment = (postId, text, isAnonymous = false) => {
+  const addComment = (postId, text, isAnonymous = false, authorDetails = null) => {
     if (!text || !text.trim()) return;
 
     const newComment = {
@@ -105,9 +105,9 @@ export const AppProvider = ({ children }) => {
         title: 'Unfiltered Colleague',
         avatar: null
       } : {
-        name: currentUser.name,
-        title: currentUser.title,
-        avatar: currentUser.avatar
+        name: authorDetails?.name || currentUser.name,
+        title: authorDetails?.title || currentUser.title,
+        avatar: authorDetails?.avatar || currentUser.avatar
       },
       isAnonymous,
       createdAt: 'Just now',

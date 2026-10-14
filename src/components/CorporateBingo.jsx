@@ -61,11 +61,11 @@ export const CorporateBingo = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-card p-4 border border-gray-200">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-card p-4 border border-gray-200 dark:border-gray-800 transition-colors">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-1.5">
           <span className="text-base">☕</span>
-          <h3 className="font-bold text-gray-900 text-sm">Meeting Bingo</h3>
+          <h3 className="font-bold text-gray-900 dark:text-white text-sm">Meeting Bingo</h3>
         </div>
         <button
           type="button"
@@ -77,7 +77,7 @@ export const CorporateBingo = () => {
         </button>
       </div>
 
-      <p className="text-[11px] text-gray-500 mb-3">
+      <p className="text-[11px] text-gray-500 dark:text-gray-400 mb-3">
         Hear a corporate buzzword in your sync? Click to mark it!
       </p>
 
@@ -94,7 +94,7 @@ export const CorporateBingo = () => {
                 h-16 p-1.5 rounded-lg text-[10px] font-medium flex flex-col items-center justify-center transition-all leading-tight border relative select-none
                 ${isSelected 
                   ? 'bg-coral-500 text-white border-coral-600 shadow-inner scale-[0.98]' 
-                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-coral-300 hover:bg-coral-50/50'}
+                  : 'bg-gray-50 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-coral-300 hover:bg-coral-50/50 dark:hover:bg-coral-950/40'}
               `}
             >
               {isSelected && (

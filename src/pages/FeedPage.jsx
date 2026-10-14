@@ -5,6 +5,8 @@ import { RightSidebar } from '../components/RightSidebar';
 import { CreatePost } from '../components/CreatePost';
 import { CategoryFilter } from '../components/CategoryFilter';
 import { PostCard } from '../components/PostCard';
+import { WelcomeBanner } from '../components/WelcomeBanner';
+import { SignedOut } from '../components/ClerkWrapper';
 import { FaSearch, FaTimes, FaInbox, FaRedo } from 'react-icons/fa';
 
 export const FeedPage = () => {
@@ -34,6 +36,11 @@ export const FeedPage = () => {
         {/* Center Column (Feed: 6 cols on lg, 8 cols on md, full on mobile) */}
         <main className="col-span-1 md:col-span-8 lg:col-span-6 space-y-4">
           
+          {/* Welcome section for logged-out visitors */}
+          <SignedOut>
+            <WelcomeBanner />
+          </SignedOut>
+
           {/* Create Post Card */}
           <CreatePost />
 
@@ -42,7 +49,7 @@ export const FeedPage = () => {
 
           {/* Active Search / Filter Banner if searching */}
           {searchQuery && (
-            <div className="bg-coral-50 border border-coral-200 px-4 py-2.5 rounded-xl flex items-center justify-between text-xs text-coral-800">
+            <div className="bg-coral-50 dark:bg-coral-950/40 border border-coral-200 dark:border-coral-800 px-4 py-2.5 rounded-xl flex items-center justify-between text-xs text-coral-800 dark:text-coral-300">
               <div className="flex items-center gap-2">
                 <FaSearch className="text-coral-500" />
                 <span>Showing search results for: <strong>"{searchQuery}"</strong></span>
@@ -50,7 +57,7 @@ export const FeedPage = () => {
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="text-coral-600 hover:text-coral-800 font-semibold flex items-center gap-1"
+                className="text-coral-600 dark:text-coral-400 hover:text-coral-800 font-semibold flex items-center gap-1"
               >
                 Clear <FaTimes />
               </button>
@@ -65,12 +72,12 @@ export const FeedPage = () => {
               ))}
             </div>
           ) : (
-            <div className="bg-white rounded-xl shadow-card p-8 border border-gray-200 text-center space-y-3">
-              <div className="w-14 h-14 mx-auto rounded-full bg-gray-100 flex items-center justify-center text-gray-400 text-2xl">
+            <div className="bg-white dark:bg-gray-900 rounded-xl shadow-card p-8 border border-gray-200 dark:border-gray-800 text-center space-y-3">
+              <div className="w-14 h-14 mx-auto rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-2xl">
                 <FaInbox />
               </div>
-              <h3 className="text-base font-bold text-gray-800">No posts found</h3>
-              <p className="text-xs text-gray-500 max-w-sm mx-auto">
+              <h3 className="text-base font-bold text-gray-800 dark:text-gray-200">No posts found</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400 max-w-sm mx-auto">
                 {searchQuery 
                   ? `No workplace rants matching "${searchQuery}". Maybe it was deleted before HR noticed?`
                   : `No posts in category "${activeCategory}" yet.`}
@@ -78,7 +85,7 @@ export const FeedPage = () => {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-coral-500 hover:bg-coral-600 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-coral-500 hover:bg-coral-600 text-white font-bold text-xs rounded-xl shadow-xs transition-all"
               >
                 <FaRedo className="text-[10px]" /> Reset Feed Filters
               </button>
