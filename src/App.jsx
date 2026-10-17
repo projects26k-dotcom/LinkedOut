@@ -16,8 +16,12 @@ import { NotificationsPage } from './pages/NotificationsPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
+import { useUserSync } from './hooks/useUserSync';
 
 export function App() {
+  // Automatically sync authenticated Clerk users to MongoDB
+  useUserSync();
+
   return (
     <AppProvider>
       <Router>

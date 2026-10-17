@@ -6,7 +6,7 @@ import { CreatePost } from '../components/CreatePost';
 import { CategoryFilter } from '../components/CategoryFilter';
 import { PostCard } from '../components/PostCard';
 import { WelcomeBanner } from '../components/WelcomeBanner';
-import { SignedOut } from '../components/ClerkWrapper';
+import { SignedIn, SignedOut } from '../components/ClerkWrapper';
 import { FaSearch, FaTimes, FaInbox, FaRedo } from 'react-icons/fa';
 
 export const FeedPage = () => {
@@ -41,8 +41,10 @@ export const FeedPage = () => {
             <WelcomeBanner />
           </SignedOut>
 
-          {/* Create Post Card */}
-          <CreatePost />
+          {/* Create Post Card (only visible when signed in) */}
+          <SignedIn>
+            <CreatePost />
+          </SignedIn>
 
           {/* Category Filter Pills & Sort Selector */}
           <CategoryFilter />
